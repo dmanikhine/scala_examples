@@ -3,7 +3,7 @@ trait JsonConverter[A] {
 }
 
 object Conv {
-val expressionJsonConverter= new JsonConverter[Expression]{
+implicit val expressionJsonConverter= new JsonConverter[Expression]{
     def convertToJson(expr:Expression): JsonValue =
     expr match {
         case Number(value) => JsonNumber(value)

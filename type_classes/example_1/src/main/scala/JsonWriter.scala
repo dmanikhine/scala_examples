@@ -15,6 +15,6 @@
         case JsonBoolean(value) => value.toString
         case JsonNull => "null"
     }
-    def write[A](value:A, conv: JsonConverter[A]):String =
+    def write[A](value:A)(implicit conv: JsonConverter[A]):String =
     write (conv.convertToJson(value))
 }
