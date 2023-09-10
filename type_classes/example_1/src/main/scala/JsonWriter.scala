@@ -1,8 +1,4 @@
-trait JsonConvertible {
-    def convertToJson: JsonValue
-}
-
-object JsonWriter {
+    object JsonWriter {
     def write(value:JsonValue): String =
     value match {
         case JsonObject(entries)=>{
@@ -19,6 +15,6 @@ object JsonWriter {
         case JsonBoolean(value) => value.toString
         case JsonNull => "null"
     }
-    def write(value: JsonConvertible):String =
-    write (value.convertToJson)
+    def write[A](value:A, conv: JsonConverter[A]):String =
+    write (conv.convertToJson(value))
 }

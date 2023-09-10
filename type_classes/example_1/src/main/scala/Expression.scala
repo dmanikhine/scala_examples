@@ -1,23 +1,7 @@
-sealed trait Expression extends JsonConvertible
-case class Number (value:Int) extends Expression {
-    def convertToJson: JsonValue=JsonNumber(value)
-}
-
-case class Plus (lhs: Expression, rhs:Expression) extends Expression {
-def convertToJson:JsonValue=JsonObject(
-    Map("op"->JsonString("+"),
-        "lhs"->lhs.convertToJson,
-        "rhs"->rhs.convertToJson))    
-}
-
-case class Minus (lhs: Expression, rhs:Expression) extends Expression {
-def convertToJson:JsonValue=JsonObject(
-    Map("op"->JsonString("-"),
-        "lhs"->lhs.convertToJson,
-        "rhs"->rhs.convertToJson))    
-
-
-}
+sealed trait Expression 
+case class Number (value:Int) extends Expression
+case class Plus (lhs: Expression, rhs:Expression) extends Expression
+case class Minus (lhs: Expression, rhs:Expression) extends Expression
 
 object ExpressionEvaluator {
     def value (expression: Expression): Int = expression match {
