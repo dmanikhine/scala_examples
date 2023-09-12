@@ -68,7 +68,7 @@ object Main extends App {
   val USD = Currency.getInstance("USD")
   val EUR = Currency.getInstance("EUR")
 
-  List(Money(1, USD), Money(10, USD)).sum
+  println(List(Money(1, USD), Money(10, USD)).sum)
 
 
   import Money.numeric._
