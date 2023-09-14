@@ -24,6 +24,8 @@ object Main extends App {
   val comb =for (_ <- future1; _ <- future2) yield "success"
 
   println(Await.result(comb,Duration.Inf))
+  
+  println(comb.get())
 
       
 }
